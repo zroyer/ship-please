@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/zroyer/ship-please/issues"
   },
-  "homepage": "https://github.com/zroyer/ship-please#readme"
+  "homepage": "https://github.com/zroyer/ship-please#readme",
+  "devDependencies": {
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0"
+  }
 }
