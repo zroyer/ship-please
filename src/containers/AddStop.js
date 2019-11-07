@@ -1,27 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { addStop } from '../actions'
 
-const AddStop = ({ dispatch }) => {
-  let input
+function AddStop({ dispatch }) {
+  const [name, setName] = useState();
+  const [address, setAddress] = useState();
+
+  const onAddStop = e => {
+    console.log('asdf');
+    e.preventDefault();
+    dispatch(addStop(name));
+  }
 
   return (
     <div>
-      <form onSubmit={e => {
-        e.preventDefault()
-        if (!input.value.trim()) {
-          return
-        }
-        dispatch(addStop(input.value))
-        input.value = ''
-      }}>
-        <input ref={node => input = node} />
-        <button type="submit">
-          Add
-        </button>
-      </form>
+      <input
+        placeholder='Name'
+        onChange={(e) => setName(e.target.value.trim())}
+      />
+      <input
+        placeholder='Address'
+        onChange={(e) => setAddress(e.target.value.trim())}
+      />
+      <button onClick={onAddStop}>
+        Add
+      </button>
     </div>
   )
 }
 
-export default connect()(AddStop)
+export default connect()(AddStop);

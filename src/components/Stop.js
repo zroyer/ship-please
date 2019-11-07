@@ -2,14 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const Stop = ({ onClick, completed, text }) => (
-  <li
+  <div
     onClick={onClick}
     style={{
       textDecoration: completed ? 'line-through' : 'none'
     }}
   >
     {text}
-  </li>
+  </div>
 )
 
 Stop.propTypes = {
