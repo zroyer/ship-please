@@ -1,9 +1,15 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import './styles.less';
+import React from 'react'
+import { render } from 'react-dom'
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import App from './components/App'
+import rootReducer from './reducers'
 
-const App = () => {
-  return <div className='test'>Hello React,Webpack 4 & Babel 7!</div>;
-};
+const store = createStore(rootReducer)
 
-ReactDOM.render(<App />, document.querySelector("#root"));
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+)
