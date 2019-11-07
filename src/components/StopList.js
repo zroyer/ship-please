@@ -2,25 +2,28 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Stop from './Stop'
 
-const StopList = ({ stops, toggleStop }) => (
-  <ul>
+const StopList = ({ stops, toggleStop, deleteStop }) => (
+  <div>
     {stops.map(stop =>
       <Stop
         key={stop.id}
         {...stop}
-        onClick={() => toggleStop(stop.id)}
+        onToggleComplete={() => toggleStop(stop.id)}
+        onDeleteStop={() => deleteStop(stop.id)}
       />
     )}
-  </ul>
+  </div>
 )
 
 StopList.propTypes = {
   stops: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     completed: PropTypes.bool.isRequired,
-    text: PropTypes.string.isRequired
+    name: PropTypes.string.isRequired,
+    address: PropTypes.string.isRequired
   }).isRequired).isRequired,
-  toggleStop: PropTypes.func.isRequired
+  toggleStop: PropTypes.func.isRequired,
+  deleteStop: PropTypes.func.isRequired
 }
 
 export default StopList

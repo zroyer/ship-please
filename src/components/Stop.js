@@ -1,21 +1,32 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Stop = ({ onClick, completed, text }) => (
-  <div
-    onClick={onClick}
-    style={{
-      textDecoration: completed ? 'line-through' : 'none'
-    }}
-  >
-    {text}
-  </div>
+const Stop = ({
+  onToggleComplete,
+  onDeleteStop,
+  completed,
+  name,
+  address
+}) => (
+  <>
+    <div
+      style={{
+        textDecoration: completed ? 'line-through' : 'none'
+      }}
+    >
+      {name} | {address}
+    </div>
+    <button onClick={onDeleteStop}>Delete</button>
+    <input type='checkbox' onClick={onToggleComplete}/>
+  </>
 )
 
 Stop.propTypes = {
-  onClick: PropTypes.func.isRequired,
+  onToggleComplete: PropTypes.func.isRequired,
+  onDeleteStop: PropTypes.func.isRequired,
   completed: PropTypes.bool.isRequired,
-  text: PropTypes.string.isRequired
+  name: PropTypes.string.isRequired,
+  address: PropTypes.string.isRequired,
 }
 
 export default Stop

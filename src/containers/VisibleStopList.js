@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { toggleStop } from '../actions'
+import { toggleStop, deleteStop } from '../actions'
 import StopList from '../components/StopList'
 import { VisibilityFilters } from '../actions'
 
@@ -8,7 +8,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  toggleStop: id => dispatch(toggleStop(id))
+  toggleStop: id => dispatch(toggleStop(id)),
+  deleteStop: id => dispatch(deleteStop(id)),
 })
 
 export default connect(

@@ -5,10 +5,15 @@ const stops = (state = [], action) => {
         ...state,
         {
           id: action.id,
-          text: action.text,
+          name: action.name,
+          address: action.address,
           completed: false
         }
       ]
+    case 'DELETE_STOP':
+      return state.filter((stop) => {
+        return stop.id !== action.id
+      });
     case 'COMPLETE_STOP':
       return state.map(stop =>
         (stop.id === action.id)
