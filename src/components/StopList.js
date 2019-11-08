@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Stop from './Stop'
 
-const StopList = ({ stops, toggleStop, deleteStop }) => (
+const StopList = ({ stops, toggleStop, editStop, deleteStop }) => (
   <div className='StopList'>
     <div className={`StopListTitle ${stops.length > 0 ? 'hasStops' : ''}`}>
       {stops.length > 0
@@ -16,6 +16,11 @@ const StopList = ({ stops, toggleStop, deleteStop }) => (
         key={stop.id}
         {...stop}
         onToggleComplete={() => toggleStop(stop.id)}
+        onEditStop={(e) => editStop({
+          inputName: e.target.name,
+          inputValue: e.target.value,
+          id: stop.id,
+        })}
         onDeleteStop={() => deleteStop(stop.id)}
       />
     )}
@@ -30,6 +35,7 @@ StopList.propTypes = {
     address: PropTypes.string.isRequired
   }).isRequired).isRequired,
   toggleStop: PropTypes.func.isRequired,
+  editStop: PropTypes.func.isRequired,
   deleteStop: PropTypes.func.isRequired
 }
 

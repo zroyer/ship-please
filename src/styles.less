@@ -112,11 +112,36 @@ body {
   .StopRow:last-of-type {
     border-bottom: 2px solid @border-color;
   }
+  .StopRowTopActions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 0 0.5rem 0;
+  }
   .StopRowLabel {
     color: @text-color;
     opacity: 0.75;
     letter-spacing: .01em;
-    font-size: 0.9rem;
-    padding: 0 0 0.25rem 0;
+    font-size: 0.75rem;
+  }
+  .StopRowInput {
+    width: 100%;
+    box-sizing : border-box;
+    color: @input-color;
+    border-radius: 3px;
+    font-size: 0.75rem;
+    padding: 0.25rem;
+    margin: 0 0 0.25rem 0;
+    font-weight: 500;
+    border-color: @transparent;
+    outline: none;
+  }
+  .StopRowInput:hover {
+    background-color: @input-bg;
+  }
+  .StopRowInput:focus,
+  .StopRowInput:active {
+    background-color: @input-bg;
+    border-color: rgba(0,0,0,0.25);
   }
 }

@@ -10,6 +10,12 @@ const stops = (state = [], action) => {
           completed: false
         }
       ]
+    case 'EDIT_STOP':
+      return state.map(stop =>
+        (stop.id === action.id)
+          ? {...stop, [action.inputName]: action.inputValue}
+          : stop
+      )
     case 'DELETE_STOP':
       return state.filter((stop) => {
         return stop.id !== action.id

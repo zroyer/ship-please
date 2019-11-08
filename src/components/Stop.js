@@ -1,39 +1,47 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+const handleKeyPress = (e) => {
+   if (e.keyCode === 13) {
+     e.target.blur();
+   }
+}
+
 const Stop = ({
   numStop,
   onToggleComplete,
+  onEditStop,
   onDeleteStop,
   completed,
   name,
   address,
 }) => (
   <div className='StopRow'>
-    <div className='StopRowLabel'>
-      Stop {numStop}:
+    <div className='StopRowTopActions'>
+      <div className='StopRowTopActionsLeft'>
+        <input
+          type='checkbox'
+          className='checkbox'
+          onClick={onToggleComplete}
+        />
+        <span className='StopRowLabel'>Stop {numStop}: {completed ? 'Completed!' : 'Incomplete'}</span>
+      </div>
+      <button onClick={onDeleteStop}>Delete</button>
     </div>
-    <div>
-      <input
-        className='StopInput'
-        value={name}
-      />
-    </div>
-    <div>
-      <input
-        className='StopInput'
-        value={address}
-      />
-    </div>
-    <button onClick={onDeleteStop}>Delete</button>
     <input
-      type='checkbox'
-      className='checkbox'
-      onClick={onToggleComplete}
+      className='StopRowInput'
+      value={name}
+      name='name'
+      onChange={(e) => onEditStop(e)}
+      onKeyDown={(e) => handleKeyPress(e)}
     />
-    {completed && (
-      <span>Completed!</span>
-    )}
+    <input
+      className='StopRowInput'
+      value={address}
+      name='address'
+      onChange={(e) => onEditStop(e)}
+      onKeyDown={(e) => handleKeyPress(e)}
+    />
   </div>
 )
 
