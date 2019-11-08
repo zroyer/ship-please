@@ -1,5 +1,85 @@
+@background-color: rgb(208,240,253);
+@text-color: rgb(51, 51, 51);
+@input-bg: rgba(0, 0, 0, 0.05);
+@input-color: rgb(68, 68, 68);
+@blue: rgb(45, 127, 249);
+@red-error: rgb(248, 43, 96);
+@transparent: rgba(0, 0, 0, 0);
+
+body {
+  background-color: @background-color;
+  font-family: 'Open Sans', sans-serif;
+}
 .App {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.AddStop {
+  width: 291px;
+  padding: 2rem;
+  border-radius: 6px;
+  margin: 2rem 0 0 0;
+  background-color: #FFFFFF;
+  .addStopTitle {
+    color: @text-color;
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: .01em;
+    margin: 0 0 1rem 0;
+  }
+  .addStopInputGroup {
+    margin: 0 0 1rem 0;
+    .addStopInputLabel {
+      color: @text-color;
+      opacity: 0.75;
+      letter-spacing: .01em;
+      font-size: 0.9rem;
+      padding: 0 0 0.25rem 0;
+    }
+    .addStopInput {
+      width: 100%;
+      box-sizing : border-box;
+      background-color: @input-bg;
+      color: @input-color;
+      border-radius: 3px;
+      font-size: 1rem;
+      padding: .5rem;
+      font-weight: 400;
+      border-color: @transparent;
+      outline: none;
+    }
+    .addStopInput:focus,
+    .addStopInput:active {
+      border-color: rgba(0,0,0,0.25);
+    }
+    .inputError {
+      animation-name: bounceIn;
+      animation-duration: 240ms;
+      color: @red-error;
+      fill: @red-error;
+      font-weight: 500;
+      font-size: 11px;
+      padding: 0.25rem 0.5rem;
+      line-height: 1.25;
+    }
+  }
+  .addStopSubmitBtn {
+    width: 100%;
+    border-radius: 3px;
+    padding: 0.5rem 1rem;
+    color: #FFFFFF;
+    background-color: @blue;
+    font-size: 1rem;
+    border-color: @transparent;
+  }
+  .addStopSubmitBtn:hover {
+    opacity: 0.85;
+  }
+  .addStopSubmitBtn:focus,
+  .addStopSubmitBtn:active {
+    opacity: 0.85;
+    outline: 0;
+    box-shadow: inset 0 0 0 2px rgba(0,0,0,0.1);
+  }
 }

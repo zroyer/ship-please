@@ -21,7 +21,7 @@ const useAddStop = (callback, validate) => {
   const handleChange = (e) => {
     const newValues = {
       ...values,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     }
     setValues(newValues);
     setErrors({
@@ -31,12 +31,12 @@ const useAddStop = (callback, validate) => {
   };
 
   return {
-    handleChange,
-    handleSubmit,
     values,
     setValues,
     errors,
     setErrors,
+    handleSubmit,
+    handleChange,
   }
 };
 

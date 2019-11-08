@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const Stop = ({
+  numStop,
   onToggleComplete,
   onDeleteStop,
   completed,
@@ -9,15 +10,17 @@ const Stop = ({
   address,
 }) => (
   <>
-    <div
-      style={{
-        textDecoration: completed ? 'line-through' : 'none'
-      }}
-    >
-      {name} | {address}
+    <div>
+      {numStop}) {name}
+    </div>
+    <div>
+      {address}
     </div>
     <button onClick={onDeleteStop}>Delete</button>
     <input type='checkbox' onClick={onToggleComplete}/>
+    {completed && (
+      <span>Completed!</span>
+    )}
   </>
 )
 

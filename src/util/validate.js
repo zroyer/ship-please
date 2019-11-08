@@ -7,7 +7,7 @@ export default function validate(values) {
     errors.address = 'Address is required';
   }
   else if (values.address.length < 3) {
-    errors.address = 'Must be at least 3 characters';
+    errors.address = 'Address must be at least 3 characters';
   }
   return errors;
 };

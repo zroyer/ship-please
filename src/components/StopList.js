@@ -4,8 +4,9 @@ import Stop from './Stop'
 
 const StopList = ({ stops, toggleStop, deleteStop }) => (
   <div>
-    {stops.map(stop =>
+    {stops.map((stop, index) =>
       <Stop
+        numStop={index + 1}
         key={stop.id}
         {...stop}
         onToggleComplete={() => toggleStop(stop.id)}

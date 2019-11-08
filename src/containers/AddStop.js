@@ -47,32 +47,48 @@ function AddStop({ dispatch }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} noValidate>
-      <div>
+    <form
+      onSubmit={handleSubmit}
+      className='AddStop'
+      noValidate
+    >
+      <div className='addStopTitle'>
+        Add a stop
+      </div>
+      <div className='addStopInputGroup'>
+        <div className='addStopInputLabel'>
+          Name
+        </div>
         <input
+          className='addStopInput'
           type='text'
           name='name'
-          placeholder='Name'
           value={values.name || ''}
           onChange={handleChange}
         />
         {errors.name && (
-          <div>{errors.name}</div>
+          <div className='inputError'>{errors.name}</div>
         )}
       </div>
-      <div>
+      <div className='addStopInputGroup'>
+        <div className='addStopInputLabel'>
+          Address
+        </div>
         <input
+          className='addStopInput'
           type='text'
           name='address'
-          placeholder='Address'
           value={values.address || ''}
           onChange={handleChange}
         />
         {errors.address && (
-          <div>{errors.address}</div>
+          <div className='inputError'>{errors.address}</div>
         )}
       </div>
-      <button onClick={handleSubmit}>
+      <button
+        onClick={handleSubmit}
+        className='addStopSubmitBtn'
+      >
         Add
       </button>
     </form>
