@@ -9,19 +9,32 @@ const Stop = ({
   name,
   address,
 }) => (
-  <>
-    <div>
-      {numStop}) {name}
+  <div className='StopRow'>
+    <div className='StopRowLabel'>
+      Stop {numStop}:
     </div>
     <div>
-      {address}
+      <input
+        className='StopInput'
+        value={name}
+      />
+    </div>
+    <div>
+      <input
+        className='StopInput'
+        value={address}
+      />
     </div>
     <button onClick={onDeleteStop}>Delete</button>
-    <input type='checkbox' onClick={onToggleComplete}/>
+    <input
+      type='checkbox'
+      className='checkbox'
+      onClick={onToggleComplete}
+    />
     {completed && (
       <span>Completed!</span>
     )}
-  </>
+  </div>
 )
 
 Stop.propTypes = {

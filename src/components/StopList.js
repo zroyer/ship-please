@@ -3,7 +3,13 @@ import PropTypes from 'prop-types'
 import Stop from './Stop'
 
 const StopList = ({ stops, toggleStop, deleteStop }) => (
-  <div>
+  <div className='StopList'>
+    <div className={`StopListTitle ${stops.length > 0 ? 'hasStops' : ''}`}>
+      {stops.length > 0
+        ? 'Itinerary'
+        : 'No stops yet!'
+      }
+    </div>
     {stops.map((stop, index) =>
       <Stop
         numStop={index + 1}
