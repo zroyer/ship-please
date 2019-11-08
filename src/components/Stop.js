@@ -6,7 +6,7 @@ const Stop = ({
   onDeleteStop,
   completed,
   name,
-  address
+  address,
 }) => (
   <>
     <div

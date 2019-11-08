@@ -1,74 +1,33 @@
-import React, { useState } from 'react'
-import { connect } from 'react-redux'
-import { addStop } from '../actions'
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import useAddStop from "./useAddStop";
+import { addStop } from '../actions';
+import validate from '../util/validate';
 
 function AddStop({ dispatch }) {
-  const [stopValues, setStopValues] = useState({
-    name: '',
-    address: '',
-  });
-  const [errors, setErrors] = useState({
-    name: '',
-    address: '',
-  });
+  const {
+    values,
+    setValues,
+    errors,
+    setErrors,
+    handleChange,
+    handleSubmit,
+  } = useAddStop(onAddStop, validate);
 
-  const validateForm = () => {
-    const nameError = stopValues.name.trim().length === 0
-      ? 'Required!'
-      : ''
-    const addressError = stopValues.address.trim().length === 0
-      ? 'Required!'
-      : stopValues.address.trim().length < 3
-        ? 'Mininum 3 characters!'
-        : ''
-
-    console.log(!nameError && !addressError)
-
-    setErrors({
-      name: nameError,
-      address: addressError,
-    });
-    return !nameError && !addressError;
-  }
-
-  const onAddStop = async (e) => {
-    e.preventDefault();
-    const isValid = validateForm();
-    console.log(isValid);
-    if (isValid) {
-      console.log('should be valid here');
-      const validAddress = await getValidAddress(stopValues.address);
-      if (validAddress.error) {
-        setErrors({
-          ...errors,
-          address: 'Invalid address!'
-        });
-      }
-      else {
-        dispatch(addStop({
-          name: stopValues.name,
-          address: validAddress.geocoded_address.formatted_address,
-        }));
-        setStopValues({
-          name: '',
-          address: '',
-        });
-      }
+  async function onAddStop() {
+    const validAddress = await getValidAddress(values.address);
+    if (validAddress.error) {
+      setErrors({
+        ...errors,
+        address: 'Invalid address!'
+      });
     }
-  }
-
-  const handleOnChange = (e) => {
-    e.preventDefault();
-    const inputName = event.target.name;
-    const inputValue = event.target.value;
-
-    setStopValues({
-      ...stopValues,
-      [inputName]: inputValue,
-    });
-
-    if (errors.name || errors.address) {
-      validateForm();
+    else {
+      dispatch(addStop({
+        name: values.name,
+        address: validAddress.geocoded_address.formatted_address,
+      }));
+      setValues({});
     }
   }
 
@@ -88,14 +47,14 @@ function AddStop({ dispatch }) {
   };
 
   return (
-    <form onSubmit={onAddStop}>
+    <form onSubmit={handleSubmit} noValidate>
       <div>
         <input
           type='text'
           name='name'
           placeholder='Name'
-          value={stopValues.name}
-          onChange={handleOnChange}
+          value={values.name || ''}
+          onChange={handleChange}
         />
         {errors.name && (
           <div>{errors.name}</div>
@@ -106,14 +65,14 @@ function AddStop({ dispatch }) {
           type='text'
           name='address'
           placeholder='Address'
-          value={stopValues.address}
-          onChange={handleOnChange}
+          value={values.address || ''}
+          onChange={handleChange}
         />
         {errors.address && (
           <div>{errors.address}</div>
         )}
       </div>
-      <button onClick={onAddStop}>
+      <button onClick={handleSubmit}>
         Add
       </button>
     </form>
