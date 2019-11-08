@@ -3,7 +3,7 @@ import AddStop from '../containers/AddStop'
 import VisibleStopList from '../containers/VisibleStopList'
 
 const App = () => (
-  <div>
+  <div className='App'>
     <AddStop />
     <VisibleStopList />
   </div>

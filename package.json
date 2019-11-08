@@ -21,8 +21,10 @@
   "homepage": "https://github.com/zroyer/ship-please#readme",
   "devDependencies": {
     "@babel/core": "^7.7.0",
+    "@babel/plugin-transform-runtime": "^7.6.2",
     "@babel/preset-env": "^7.7.1",
     "@babel/preset-react": "^7.7.0",
+    "@babel/runtime": "^7.7.2",
     "babel-loader": "^8.0.6",
     "css-loader": "^3.2.0",
     "html-loader": "^0.5.5",

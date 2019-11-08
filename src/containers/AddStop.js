@@ -12,17 +12,24 @@ function AddStop({ dispatch }) {
     address: '',
   });
 
-  const onClickAdd = (e) => {
+  const onClickAdd = async (e) => {
     e.preventDefault();
-    dispatch(
-      addStop({
+    const validAddress = await getValidAddress(stopValues.address);
+
+    if (validAddress.error) {
+      console.log('uh oh')
+      console.log(validAddress.error);
+    }
+    else {
+      dispatch(addStop({
         name: stopValues.name,
-        address: stopValues.address,
-    }));
-    setStopValues({
-      name: '',
-      address: '',
-    });
+        address: validAddress.geocoded_address.formatted_address,
+      }));
+      setStopValues({
+        name: '',
+        address: '',
+      });
+    }
   }
 
   const handleOnChange = (e) => {
@@ -35,6 +42,21 @@ function AddStop({ dispatch }) {
       [inputName]: inputValue,
     });
   }
+
+  const getValidAddress = async (address) => {
+    const addressValidation = await fetch(
+      'https://dev-api.shipwell.com/v2/locations/addresses/validate/',
+      {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({formatted_address: address}),
+    });
+
+    return addressValidation.json();
+  };
 
   return (
     <div>
