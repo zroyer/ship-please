@@ -1,11 +1,11 @@
 import React from 'react'
 import AddStop from '../containers/AddStop'
-import VisibleStopList from '../containers/VisibleStopList'
+import Itinerary from '../containers/Itinerary'
 
 const App = () => (
   <div className='App'>
     <AddStop />
-    <VisibleStopList />
+    <Itinerary />
   </div>
 )
 

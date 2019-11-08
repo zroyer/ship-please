@@ -7,28 +7,53 @@ function AddStop({ dispatch }) {
     name: '',
     address: '',
   });
-  const [errors, setError] = useState({
+  const [errors, setErrors] = useState({
     name: '',
     address: '',
   });
 
-  const onClickAdd = async (e) => {
-    e.preventDefault();
-    const validAddress = await getValidAddress(stopValues.address);
+  const validateForm = () => {
+    const nameError = stopValues.name.trim().length === 0
+      ? 'Required!'
+      : ''
+    const addressError = stopValues.address.trim().length === 0
+      ? 'Required!'
+      : stopValues.address.trim().length < 3
+        ? 'Mininum 3 characters!'
+        : ''
 
-    if (validAddress.error) {
-      console.log('uh oh')
-      console.log(validAddress.error);
-    }
-    else {
-      dispatch(addStop({
-        name: stopValues.name,
-        address: validAddress.geocoded_address.formatted_address,
-      }));
-      setStopValues({
-        name: '',
-        address: '',
-      });
+    console.log(!nameError && !addressError)
+
+    setErrors({
+      name: nameError,
+      address: addressError,
+    });
+    return !nameError && !addressError;
+  }
+
+  const onAddStop = async (e) => {
+    e.preventDefault();
+    const isValid = validateForm();
+    console.log(isValid);
+    if (isValid) {
+      console.log('should be valid here');
+      const validAddress = await getValidAddress(stopValues.address);
+      if (validAddress.error) {
+        setErrors({
+          ...errors,
+          address: 'Invalid address!'
+        });
+      }
+      else {
+        dispatch(addStop({
+          name: stopValues.name,
+          address: validAddress.geocoded_address.formatted_address,
+        }));
+        setStopValues({
+          name: '',
+          address: '',
+        });
+      }
     }
   }
 
@@ -41,6 +66,10 @@ function AddStop({ dispatch }) {
       ...stopValues,
       [inputName]: inputValue,
     });
+
+    if (errors.name || errors.address) {
+      validateForm();
+    }
   }
 
   const getValidAddress = async (address) => {
@@ -59,27 +88,35 @@ function AddStop({ dispatch }) {
   };
 
   return (
-    <div>
-      <input
-        type='text'
-        name='name'
-        placeholder='Name'
-        value={stopValues.name}
-        onChange={handleOnChange}
-      />
-      <div>Name Errors: </div>
-      <input
-        type='text'
-        name='address'
-        placeholder='Address'
-        value={stopValues.address}
-        onChange={handleOnChange}
-      />
-      <div>Address Errors: </div>
-      <button onClick={onClickAdd}>
+    <form onSubmit={onAddStop}>
+      <div>
+        <input
+          type='text'
+          name='name'
+          placeholder='Name'
+          value={stopValues.name}
+          onChange={handleOnChange}
+        />
+        {errors.name && (
+          <div>{errors.name}</div>
+        )}
+      </div>
+      <div>
+        <input
+          type='text'
+          name='address'
+          placeholder='Address'
+          value={stopValues.address}
+          onChange={handleOnChange}
+        />
+        {errors.address && (
+          <div>{errors.address}</div>
+        )}
+      </div>
+      <button onClick={onAddStop}>
         Add
       </button>
-    </div>
+    </form>
   )
 }
 
