@@ -15,7 +15,8 @@ function AddStop({ dispatch }) {
   } = useAddStop(onAddStop, validate);
 
   async function onAddStop() {
-    const validAddress = await getValidAddress(values.address);
+    const formValues = values;
+    const validAddress = await getValidAddress(formValues.address);
     if (validAddress.error) {
       setErrors({
         ...errors,
@@ -24,7 +25,7 @@ function AddStop({ dispatch }) {
     }
     else {
       dispatch(addStop({
-        name: values.name,
+        name: formValues.name,
         address: validAddress.geocoded_address.formatted_address,
       }));
       setValues({});

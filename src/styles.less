@@ -1,4 +1,5 @@
-@background-color: rgb(208, 240, 253);
+@background-color: #F6F9FC;
+@test: #6772E5;
 @border-color: rgba(0, 0, 0, 0.05);
 @transparent: rgba(0, 0, 0, 0);
 @white: rgb(255, 255, 255);
@@ -10,8 +11,12 @@
 
 body {
   background-color: @background-color;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Noto Sans SC', sans-serif;
   font-size: .8rem;
+}
+input,
+textarea {
+  font-family: 'Noto Sans SC', sans-serif;
 }
 .App {
   display: flex;
@@ -19,7 +24,7 @@ body {
   align-items: center;
 }
 .AddStop {
-  width: 291px;
+  width: 320px;
   padding: 2rem;
   border-radius: 6px;
   margin: 1.5rem 0 0 0;
@@ -27,19 +32,18 @@ body {
   border: 2px solid @border-color;
   .addStopTitle {
     color: @text-color;
+    opacity: 0.75;
     font-size: 1.1rem;
     font-weight: 500;
     margin: 0 0 1rem 0;
-    letter-spacing: 0.56px;
   }
   .addStopInputGroup {
     margin: 0 0 1rem 0;
     .addStopInputLabel {
       color: @text-color;
       opacity: 0.75;
-      letter-spacing: .01em;
       font-size: 0.9rem;
-      padding: 0 0 0.25rem 0;
+      margin: 0 0 0.25rem 0;
     }
     .addStopInput {
       width: 100%;
@@ -73,7 +77,7 @@ body {
     border-radius: 3px;
     padding: 0.5rem 1rem;
     color: @white;
-    background-color: @blue;
+    background-color: @test;
     font-size: 1rem;
     font-weight: 500;
     letter-spacing: 0.128px;
@@ -90,7 +94,7 @@ body {
   }
 }
 .StopList {
-  width: 291px;
+  width: 320px;
   padding: 2rem;
   border-radius: 6px;
   margin: 1.5rem 0 0 0;
@@ -98,6 +102,7 @@ body {
   border: 2px solid @border-color;
   .StopListTitle {
     color: @text-color;
+    opacity: 0.75;
     font-size: 1.1rem;
     font-weight: 500;
     letter-spacing: 0.56px;
@@ -116,32 +121,45 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 0 0 0.5rem 0;
+    margin: 0 0 0.25rem 0;
+    padding: 0.25rem;
   }
   .StopRowLabel {
     color: @text-color;
-    opacity: 0.75;
-    letter-spacing: .01em;
-    font-size: 0.75rem;
+    font-size: 0.9rem;
+    font-weight: 500;
   }
-  .StopRowInput {
+  .StopRowInput,
+  .StopRowTextarea {
     width: 100%;
     box-sizing : border-box;
-    color: @input-color;
+    color: @text-color;
     border-radius: 3px;
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     padding: 0.25rem;
-    margin: 0 0 0.25rem 0;
     font-weight: 500;
-    border-color: @transparent;
+    border: 2px solid @transparent;
     outline: none;
   }
-  .StopRowInput:hover {
+  .StopRowInput:hover,
+  .StopRowTextarea:hover {
     background-color: @input-bg;
+    color: @input-color;
+    cursor: pointer;
   }
   .StopRowInput:focus,
-  .StopRowInput:active {
+  .StopRowTextarea:focus,
+  .StopRowInput:active,
+  .StopRowTextarea:active {
     background-color: @input-bg;
+    color: @input-color;
     border-color: rgba(0,0,0,0.25);
+    cursor: text;
+  }
+  .StopRowInput {
+    margin: 0 0 0.25rem 0;
+  }
+  .StopRowTextarea {
+    resize: none;
   }
 }

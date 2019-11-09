@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const handleKeyPress = (e) => {
-   if (e.keyCode === 13) {
-     e.target.blur();
-   }
+  if (e.keyCode === 13) {
+   e.target.blur();
+  }
 }
 
 const Stop = ({
@@ -24,7 +24,7 @@ const Stop = ({
           className='checkbox'
           onClick={onToggleComplete}
         />
-        <span className='StopRowLabel'>Stop {numStop}: {completed ? 'Completed!' : 'Incomplete'}</span>
+        <span className='StopRowLabel'>Stop {numStop}: {completed ? 'Complete' : 'Incomplete'}</span>
       </div>
       <button onClick={onDeleteStop}>Delete</button>
     </div>
@@ -35,8 +35,8 @@ const Stop = ({
       onChange={(e) => onEditStop(e)}
       onKeyDown={(e) => handleKeyPress(e)}
     />
-    <input
-      className='StopRowInput'
+    <textarea
+      className='StopRowTextarea'
       value={address}
       name='address'
       onChange={(e) => onEditStop(e)}
