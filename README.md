@@ -1,5 +1,5 @@
 # Ship Please! 🚢
-[![Netlify Status](https://api.netlify.com/api/v1/badges/49c7e58a-1026-48bd-97c3-aa56e215cdc1/deploy-status)](https://app.netlify.com/sites/ship-please/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/49c7e58a-1026-48bd-97c3-aa56e215cdc1/deploy-status)](https://app.netlify.com/sites/ship-please/deploys)  
 Add, Edit, and Remove stops from a Shipment Itinerary
 
 ## Setup 🚀
