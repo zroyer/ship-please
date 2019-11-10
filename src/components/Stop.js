@@ -40,33 +40,41 @@ function Stop ({
 
   return (
     <div className='StopRow'>
-      <Input
-        className='StopRowInput'
-        value={editValues.name}
-        name='name'
-        onChange={(e) => handleChange(e)}
-        onKeyDown={(e) => handleKeyPress(e)}
-        onBlur={(e) => handleOnBlur(e)}
-      />
-      <Input
-        className='StopRowTextarea'
-        value={editValues.address}
-        name='address'
-        onChange={(e) => handleChange(e)}
-        onKeyDown={(e) => handleKeyPress(e)}
-        onBlur={(e) => handleOnBlur(e)}
-        isMultiline
-      />
-      <div className='StopRowActions'>
-        <label className='container'>
-          <span className='labelText'>Complete</span>
-          <input
-            type='checkbox'
-            onClick={onToggleComplete}
-          />
-          <span className='checkmark'/>
-        </label>
-        <span className='StopRowDelete' onClick={onDeleteStop}>&#215;</span>
+      <div className={`StopRowProgress ${completed ? 'complete': ''}`}>
+        <div className='StopRowProgressBadge'>
+          <span>{numStop}</span>
+        </div>
+        <div className={`StopRowProgressBar ${numStop === 1 ? 'hidden': ''}`} />
+      </div>
+      <div className='StopRowContent'>
+        <Input
+          className='StopRowInput'
+          value={editValues.name}
+          name='name'
+          onChange={(e) => handleChange(e)}
+          onKeyDown={(e) => handleKeyPress(e)}
+          onBlur={(e) => handleOnBlur(e)}
+        />
+        <Input
+          className='StopRowTextarea'
+          value={editValues.address}
+          name='address'
+          onChange={(e) => handleChange(e)}
+          onKeyDown={(e) => handleKeyPress(e)}
+          onBlur={(e) => handleOnBlur(e)}
+          isMultiline
+        />
+        <div className='StopRowActions'>
+          <label className='container'>
+            <span className='labelText'>Complete</span>
+            <input
+              type='checkbox'
+              onClick={onToggleComplete}
+            />
+            <span className='checkmark'/>
+          </label>
+          <span className='StopRowDelete' onClick={onDeleteStop}>&#215;</span>
+        </div>
       </div>
     </div>
   )
