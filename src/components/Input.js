@@ -1,6 +1,5 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Stop from './Stop'
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const Input = ({
   className,
@@ -35,12 +34,12 @@ const Input = ({
 }
 
 Input.propTypes = {
-  className: PropTypes.string.isRequired,
+  className: PropTypes.string,
   name: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
-  onChange: PropTypes.function,
-  onKeyDown: PropTypes.function,
-  onBlur: PropTypes.function,
+  onChange: PropTypes.func.isRequired,
+  onKeyDown: PropTypes.func,
+  onBlur: PropTypes.func,
   isMultiline: PropTypes.bool,
 }
 

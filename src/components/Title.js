@@ -1,6 +1,5 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Stop from './Stop'
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const Title = ({ content, className }) => (
   <div className={`Title ${className}`}>

@@ -4,7 +4,8 @@ import useAddStop from "./useAddStop";
 import { addStop } from '../actions';
 import validate from '../util/validate';
 import Title from '../components/Title';
-import Input from '../components/Input';
+import InputGroup from '../components/InputGroup';
+import Button from '../components/Button';
 
 function AddStop({ dispatch }) {
   const {
@@ -59,42 +60,25 @@ function AddStop({ dispatch }) {
         content='Add a stop'
         className='addStopTitle'
       />
-      <div className='addStopInputGroup'>
-        <div className='addStopInputLabel'>
-          Name
-        </div>
-        <Input
-          className='addStopInput'
-          type='text'
-          name='name'
-          value={values.name || ''}
-          onChange={handleChange}
-        />
-        {errors.name && (
-          <div className='inputError'>{errors.name}</div>
-        )}
-      </div>
-      <div className='addStopInputGroup'>
-        <div className='addStopInputLabel'>
-          Address
-        </div>
-        <Input
-          className='addStopInput'
-          type='text'
-          name='address'
-          value={values.address || ''}
-          onChange={handleChange}
-        />
-        {errors.address && (
-          <div className='inputError'>{errors.address}</div>
-        )}
-      </div>
-      <button
-        onClick={handleSubmit}
+      <InputGroup
+        label='Name'
+        inputName='name'
+        inputValue={values.name || ''}
+        error={errors.name || ''}
+        onChange={handleChange}
+      />
+      <InputGroup
+        label='Address'
+        inputName='address'
+        inputValue={values.address || ''}
+        error={errors.address || ''}
+        onChange={handleChange}
+      />
+      <Button
+        content='Add'
         className='addStopSubmitBtn'
-      >
-        Add
-      </button>
+        onClick={handleSubmit}
+      />
     </form>
   )
 }
