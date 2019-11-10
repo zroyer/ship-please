@@ -1,4 +1,4 @@
-.container {
+.CheckboxGroup {
   display: block;
   position: relative;
   cursor: pointer;
@@ -23,40 +23,39 @@
     height: 0;
     width: 0;
   }
-}
-
-.checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 18px;
-  width: 18px;
-  background-color: @input-bg;
-  border: 2px solid rgba(0, 0, 0, 0.1);
-  border-radius: 3px;
-}
-.container:hover input ~ .checkmark {
-  border: 2px solid rgba(0, 0, 0, 0.25);
-}
-.container input:checked ~ .checkmark {
-  background-color: @accent;
-}
-.checkmark:after {
-  content: '';
-  position: absolute;
-  display: none;
-}
-.container input:checked ~ .checkmark:after {
-  display: block;
-}
-.container .checkmark:after {
-  left: 6px;
-  top: 2px;
-  width: 4px;
-  height: 10px;
-  border: solid white;
-  border-width: 0 2px 2px 0;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 18px;
+    width: 18px;
+    background-color: @input-bg;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+    &:after {
+      left: 6px;
+      top: 2px;
+      width: 4px;
+      height: 10px;
+      border: solid white;
+      border-width: 0 2px 2px 0;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+      content: '';
+      position: absolute;
+      display: none;
+    }
+  }
+  input:checked ~ .checkmark {
+    background-color: @accent;
+    &:after {
+      display: block;
+    }
+  }
+  &:hover {
+    input ~ .checkmark {
+      border: 2px solid rgba(0, 0, 0, 0.25);
+    }
+  }
 }

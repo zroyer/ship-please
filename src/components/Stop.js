@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Input from './Input';
 import StopRowProgress from './StopRowProgress';
+import CheckboxGroup from './CheckboxGroup';
 
 function Stop ({
   numStop,
@@ -64,15 +65,15 @@ function Stop ({
           isMultiline
         />
         <div className='StopRowActions'>
-          <label className='container'>
-            <span className='labelText'>Complete</span>
-            <input
-              type='checkbox'
-              onClick={onToggleComplete}
-            />
-            <span className='checkmark'/>
-          </label>
-          <span className='StopRowDelete' onClick={onDeleteStop}>Delete</span>
+          <CheckboxGroup
+            onClick={onToggleComplete}
+          />
+          <span
+            className='StopRowDelete'
+            onClick={onDeleteStop}
+          >
+            Delete
+          </span>
         </div>
       </div>
     </div>
