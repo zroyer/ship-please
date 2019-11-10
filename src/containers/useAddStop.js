@@ -37,6 +37,7 @@ const useAddStop = (callback, validate) => {
     setErrors,
     handleSubmit,
     handleChange,
+    isSubmitting,
   }
 };
 

@@ -13,8 +13,8 @@ function AddStop({ dispatch }) {
     setValues,
     errors,
     setErrors,
-    handleChange,
     handleSubmit,
+    handleChange,
     isSubmitting,
   } = useAddStop(onAddStop, validate);
 
@@ -76,7 +76,7 @@ function AddStop({ dispatch }) {
         onChange={handleChange}
       />
       <Button
-        content='Add'
+        content={isSubmitting ? 'Adding...' : 'Add'}
         className='addStopSubmitBtn'
         onClick={handleSubmit}
         disabled={isSubmitting}
