@@ -1,15 +1,17 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Stop from './Stop'
+import React from 'react';
+import PropTypes from 'prop-types';
+import Stop from './Stop';
+import Title from './Title';
 
 const StopList = ({ stops, toggleStop, editStop, deleteStop }) => (
   <div className='StopList'>
-    <div className={`StopListTitle ${stops.length > 0 ? 'hasStops' : ''}`}>
-      {stops.length > 0
+    <Title
+      content={stops.length > 0
         ? 'Itinerary'
         : 'No stops yet!'
       }
-    </div>
+      className={`${stops.length > 0 ? 'hasStops' : ''}`}
+    />
     {stops.map((stop, index) =>
       <Stop
         numStop={index + 1}

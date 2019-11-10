@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import useAddStop from "./useAddStop";
 import { addStop } from '../actions';
 import validate from '../util/validate';
+import Title from '../components/Title';
 
 function AddStop({ dispatch }) {
   const {
@@ -53,9 +54,10 @@ function AddStop({ dispatch }) {
       className='AddStop'
       noValidate
     >
-      <div className='addStopTitle'>
-        Add a stop
-      </div>
+      <Title
+        content='Add a stop'
+        className='addStopTitle'
+      />
       <div className='addStopInputGroup'>
         <div className='addStopInputLabel'>
           Name
