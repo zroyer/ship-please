@@ -14,14 +14,13 @@ const StopList = ({ stops, toggleStop, editStop, deleteStop }) => (
       <Stop
         numStop={index + 1}
         key={stop.id}
-        {...stop}
         onToggleComplete={() => toggleStop(stop.id)}
-        onEditStop={(e) => editStop({
-          inputName: e.target.name,
-          inputValue: e.target.value,
+        onEditStop={(values) => editStop({
           id: stop.id,
+          newValues: values,
         })}
         onDeleteStop={() => deleteStop(stop.id)}
+        {...stop}
       />
     )}
   </div>

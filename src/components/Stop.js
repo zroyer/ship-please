@@ -1,13 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 
-const handleKeyPress = (e) => {
-  if (e.keyCode === 13) {
-   e.target.blur();
-  }
-}
-
-const Stop = ({
+function Stop ({
   numStop,
   onToggleComplete,
   onEditStop,
@@ -15,35 +9,67 @@ const Stop = ({
   completed,
   name,
   address,
-}) => (
-  <div className='StopRow'>
-    <div className='StopRowTopActions'>
-      <div className='StopRowTopActionsLeft'>
-        <input
-          type='checkbox'
-          className='checkbox'
-          onClick={onToggleComplete}
-        />
-        <span className='StopRowLabel'>Stop {numStop}: {completed ? 'Complete' : 'Incomplete'}</span>
+}) {
+  const [editValues, setEditValues] = useState({
+    name: name,
+    address: address,
+  });
+
+  const handleChange = (e) => {
+    const newValues = {
+      ...editValues,
+      [e.target.name]: e.target.value,
+    }
+    setEditValues(newValues);
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.keyCode === 13) {
+      onEditStop(editValues);
+      console.log(editValues);
+      e.target.blur();
+    }
+  }
+
+  return (
+    <div className='StopRow'>
+      <div className='StopRowTopActions'>
+        <div className='StopRowTopActionsLeft'>
+          <label className="container">
+            <input
+              type="checkbox"
+              onClick={onToggleComplete}
+            />
+            <span className="checkmark"/>
+          </label>
+          <span className='StopRowLabel'>
+            {
+              `Stop ${numStop}: `
+            }
+            <span className={`StopRowLabelValue ${completed ? 'completed' : ''}`}>
+              {completed ? 'Complete' : 'Incomplete'}
+            </span>
+          </span>
+        </div>
+        <button onClick={onDeleteStop}>Delete</button>
       </div>
-      <button onClick={onDeleteStop}>Delete</button>
+      <input
+        className='StopRowInput'
+        value={editValues.name}
+        name='name'
+        onChange={(e) => handleChange(e)}
+        onKeyDown={(e) => handleKeyPress(e)}
+      />
+      <textarea
+        className='StopRowTextarea'
+        value={editValues.address}
+        name='address'
+        onChange={(e) => handleChange(e)}
+        onKeyDown={(e) => handleKeyPress(e)}
+      />
     </div>
-    <input
-      className='StopRowInput'
-      value={name}
-      name='name'
-      onChange={(e) => onEditStop(e)}
-      onKeyDown={(e) => handleKeyPress(e)}
-    />
-    <textarea
-      className='StopRowTextarea'
-      value={address}
-      name='address'
-      onChange={(e) => onEditStop(e)}
-      onKeyDown={(e) => handleKeyPress(e)}
-    />
-  </div>
-)
+  )
+}
 
 Stop.propTypes = {
   onToggleComplete: PropTypes.func.isRequired,

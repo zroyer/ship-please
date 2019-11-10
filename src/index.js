@@ -7,7 +7,7 @@ import rootReducer from './reducers'
 import './styles.less';
 
 const store = createStore(rootReducer)
-
+console.log(store)
 render(
   <Provider store={store}>
     <App />

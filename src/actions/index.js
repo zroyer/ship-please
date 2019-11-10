@@ -7,19 +7,18 @@ export const addStop = ({ name, address }) => ({
   address,
 });
 
-export const editStop = ({ id, inputName, inputValue }) => ({
+export const editStop = ({ id, newValues }) => ({
   type: 'EDIT_STOP',
   id,
-  inputName,
-  inputValue,
+  newValues,
 });
 
-export const deleteStop = id => ({
+export const deleteStop = (id) => ({
   type: 'DELETE_STOP',
   id,
 });
 
-export const toggleStop = id => ({
+export const toggleStop = (id) => ({
   type: 'COMPLETE_STOP',
   id,
 });
