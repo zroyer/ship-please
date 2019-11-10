@@ -80,11 +80,13 @@ function Stop ({
 }
 
 Stop.propTypes = {
+  numStop: PropTypes.number.isRequired,
   onToggleComplete: PropTypes.func.isRequired,
+  onEditStop: PropTypes.func.isRequired,
   onDeleteStop: PropTypes.func.isRequired,
   completed: PropTypes.bool.isRequired,
   name: PropTypes.string.isRequired,
   address: PropTypes.string.isRequired,
 }
 
-export default Stop
+export default Stop;

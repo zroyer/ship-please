@@ -24,7 +24,7 @@ const StopList = ({ stops, toggleStop, editStop, deleteStop }) => (
       />
     )}
   </div>
-)
+);
 
 StopList.propTypes = {
   stops: PropTypes.arrayOf(PropTypes.shape({
@@ -38,4 +38,4 @@ StopList.propTypes = {
   deleteStop: PropTypes.func.isRequired
 }
 
-export default StopList
+export default StopList;

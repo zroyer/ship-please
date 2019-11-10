@@ -4,11 +4,10 @@ import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import App from './components/App'
 import rootReducer from './reducers'
-import './styles.less';
+import './styles/index.less';
 
-const store = createStore(rootReducer)
-console.log(store)
-render(
+const store = createStore(rootReducer);
+render (
   <Provider store={store}>
     <App />
   </Provider>,
