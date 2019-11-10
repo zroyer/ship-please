@@ -25,10 +25,16 @@ function Stop ({
 
   const handleKeyPress = (e) => {
     if (e.keyCode === 13) {
-      onEditStop(editValues);
-      console.log(editValues);
+      const newValues = {...editValues};
+      onEditStop(newValues);
       e.target.blur();
     }
+  }
+
+  const handleOnBlur = (e) => {
+    e.preventDefault();
+    const newValues = {...editValues};
+    onEditStop(newValues);
   }
 
   return (
@@ -59,6 +65,7 @@ function Stop ({
         name='name'
         onChange={(e) => handleChange(e)}
         onKeyDown={(e) => handleKeyPress(e)}
+        onBlur={(e) => handleOnBlur(e)}
       />
       <textarea
         className='StopRowTextarea'
@@ -66,6 +73,7 @@ function Stop ({
         name='address'
         onChange={(e) => handleChange(e)}
         onKeyDown={(e) => handleKeyPress(e)}
+        onBlur={(e) => handleOnBlur(e)}
       />
     </div>
   )
