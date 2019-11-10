@@ -3,7 +3,6 @@
   width: @content-width;
   margin: 1.5rem 0 3rem 0;
   padding: 1.5rem;
-  border: 2px solid @border-color;
   border-radius: 6px;
   .hasStops {
     margin: 0 0 0.75rem 0;
@@ -21,11 +20,26 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     .StopRowTopActionsLeft {
       display: flex;
       flex-direction: row;
       align-items: center;
       justify-content: flex-start;
+    }
+    .StopRowDelete {
+      color: @red-error;
+      width: 14px;
+      height: 14px;
+      font-size: 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      &:hover {
+        opacity: 0.6;
+      }
     }
   }
   .StopRowLabel {
@@ -53,7 +67,7 @@
   .StopRowTextarea {
     color: @text-color;
     margin: 0 0 0.25rem 0;
-    padding: 0.25rem;
+    padding: 0.2rem;
     font-size: 0.9rem;
     opacity: 0.75;
     &:hover{
@@ -70,6 +84,11 @@
       cursor: text;
       opacity: 1;
     }
+  }
+  .StopRowInput {
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 0.25rem;
   }
   .StopRowTextarea {
     resize: none;

@@ -15,6 +15,7 @@ function AddStop({ dispatch }) {
     setErrors,
     handleChange,
     handleSubmit,
+    isSubmitting,
   } = useAddStop(onAddStop, validate);
 
   async function onAddStop() {
@@ -78,6 +79,7 @@ function AddStop({ dispatch }) {
         content='Add'
         className='addStopSubmitBtn'
         onClick={handleSubmit}
+        disabled={isSubmitting}
       />
     </form>
   )

@@ -58,7 +58,7 @@ function Stop ({
             </span>
           </span>
         </div>
-        <button onClick={onDeleteStop}>Delete</button>
+        <span className='StopRowDelete' onClick={onDeleteStop}>&#215;</span>
       </div>
       <Input
         className='StopRowInput'
