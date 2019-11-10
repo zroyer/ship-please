@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Stop from './Stop';
-import Title from './Title';
+import Header from './Header';
 
 const StopList = ({ stops, toggleStop, editStop, deleteStop }) => (
   <div className='StopList'>
-    <Title
+    <Header
       content={stops.length > 0
         ? 'Itinerary'
         : 'No stops yet!'

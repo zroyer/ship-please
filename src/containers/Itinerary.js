@@ -5,13 +5,13 @@ import { VisibilityFilters } from '../actions';
 
 const mapStateToProps = state => ({
   stops: state.stops,
-})
+});
 
 const mapDispatchToProps = dispatch => ({
   toggleStop: id => dispatch(toggleStop(id)),
   editStop: id => dispatch(editStop(id)),
   deleteStop: id => dispatch(deleteStop(id)),
-})
+});
 
 export default connect(
   mapStateToProps,

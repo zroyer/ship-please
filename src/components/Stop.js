@@ -30,13 +30,13 @@ function Stop ({
       onEditStop(newValues);
       e.target.blur();
     }
-  }
+  };
 
   const handleOnBlur = (e) => {
     e.preventDefault();
     const newValues = {...editValues};
     onEditStop(newValues);
-  }
+  };
 
   return (
     <div className='StopRow'>
@@ -79,7 +79,7 @@ function Stop ({
       />
     </div>
   )
-}
+};
 
 Stop.propTypes = {
   numStop: PropTypes.number.isRequired,
@@ -89,6 +89,6 @@ Stop.propTypes = {
   completed: PropTypes.bool.isRequired,
   name: PropTypes.string.isRequired,
   address: PropTypes.string.isRequired,
-}
+};
 
 export default Stop;

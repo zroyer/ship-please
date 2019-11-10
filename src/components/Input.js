@@ -31,7 +31,7 @@ const Input = ({
         onBlur={onBlur}
       />
     )
-}
+};
 
 Input.propTypes = {
   className: PropTypes.string,
@@ -41,6 +41,6 @@ Input.propTypes = {
   onKeyDown: PropTypes.func,
   onBlur: PropTypes.func,
   isMultiline: PropTypes.bool,
-}
+};
 
 export default Input;

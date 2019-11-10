@@ -1,6 +1,5 @@
-@import 'variables.less';
-
 body {
+  margin: 0;
   background-color: @background-color;
   font-family: 'Noto Sans SC', sans-serif;
   font-size: .8rem;
@@ -13,19 +12,37 @@ textarea {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-.Input {
-  width: 100%;
-  border: 2px solid @transparent;
-  border-radius: 3px;
-  outline: none;
-  font-weight: 500;
-  box-sizing : border-box;
-}
-.Title {
-  color: @text-color;
-  opacity: 0.75;
-  font-size: 1.1rem;
-  font-weight: 500;
-  letter-spacing: 0.56px;
+  .Title {
+    width: @content-width;
+    padding: 0 1.5rem;
+    margin: 2.5rem 0 0 0;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: flex-start;
+    .content {
+      color: @white;
+      font-size: 1.7rem;
+      font-weight: 700;
+    }
+    .logo {
+      font-size: 2rem;
+      margin: 0 0.75rem 0 0;
+    }
+  }
+  .Input {
+    width: 100%;
+    border: 2px solid @transparent;
+    border-radius: 3px;
+    outline: none;
+    font-weight: 500;
+    box-sizing : border-box;
+  }
+  .Header {
+    color: @text-color;
+    opacity: 0.75;
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 0.56px;
+  }
 }

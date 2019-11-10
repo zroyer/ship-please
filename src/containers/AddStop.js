@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import useAddStop from "./useAddStop";
 import { addStop } from '../actions';
 import validate from '../util/validate';
-import Title from '../components/Title';
+import Header from '../components/Header';
 import InputGroup from '../components/InputGroup';
 import Button from '../components/Button';
 
@@ -56,9 +56,9 @@ function AddStop({ dispatch }) {
       className='AddStop'
       noValidate
     >
-      <Title
+      <Header
         content='Add a stop'
-        className='addStopTitle'
+        className='addStopHeader'
       />
       <InputGroup
         label='Name'

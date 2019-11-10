@@ -24,7 +24,7 @@ const InputGroup = ({
       <div className='InputGroupError'>{error}</div>
     )}
   </div>
-)
+);
 
 InputGroup.propTypes = {
   inputValue: PropTypes.string.isRequired,
@@ -32,6 +32,6 @@ InputGroup.propTypes = {
   label: PropTypes.string.isRequired,
   error: PropTypes.string.isRequired,
   onChange: PropTypes.func,
-}
+};
 
 export default InputGroup;
