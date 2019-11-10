@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Input from './Input';
+import StopRowProgress from './StopRowProgress';
 
 function Stop ({
   numStop,
@@ -40,12 +41,10 @@ function Stop ({
 
   return (
     <div className='StopRow'>
-      <div className={`StopRowProgress ${completed ? 'complete': ''}`}>
-        <div className='StopRowProgressBadge'>
-          <span>{numStop}</span>
-        </div>
-        <div className={`StopRowProgressBar ${numStop === 1 ? 'hidden': ''}`} />
-      </div>
+      <StopRowProgress
+        numStop={numStop}
+        completed={completed}
+      />
       <div className='StopRowContent'>
         <Input
           className='StopRowInput'
