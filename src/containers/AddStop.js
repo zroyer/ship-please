@@ -20,20 +20,20 @@ function AddStop({ dispatch }) {
 
   async function onAddStop() {
     const formValues = values;
-    const validAddress = await getValidAddress(formValues.address);
-    if (validAddress.error) {
-      setErrors({
-        ...errors,
-        address: 'Invalid address!'
+    return getValidAddress(formValues.address)
+      .then((response) => {
+        dispatch(addStop({
+          name: formValues.name,
+          address: response.geocoded_address.formatted_address,
+        }));
+        setValues({});
+      })
+      .catch((error) => {
+        setErrors({
+          ...errors,
+          address: 'Invalid address!'
+        });
       });
-    }
-    else {
-      dispatch(addStop({
-        name: formValues.name,
-        address: validAddress.geocoded_address.formatted_address,
-      }));
-      setValues({});
-    }
   }
 
   const getValidAddress = async (address) => {

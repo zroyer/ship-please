@@ -115,9 +115,9 @@
   justify-content: flex-start;
   align-items: center;
   .StopRowProgressBar {
-    width: 4px;
-    height: 140px;
-    margin-top: -140px;
+    width: 6px;
+    height: 147px;
+    margin: -140px 0 0 0;
     background-color: @accent;
     position: absolute;
     z-index: 2;
@@ -127,8 +127,9 @@
   }
   .StopRowProgressBadge {
     background-color: @accent;
-    width: 36px;
-    height: 36px;
+    margin: 3px 0 0 0;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -136,6 +137,7 @@
     z-index: 3;
     span {
       color: @white;
+      margin: 0 0 0 1px;
       font-size: 1rem;
       font-weight: 500;
     }

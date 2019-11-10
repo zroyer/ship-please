@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react';
 
-const useAddStop = (callback, validate) => {
+const useAddStop = (onAddStop, validate) => {
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     if (Object.keys(errors).length === 0 && isSubmitting) {
-      callback();
-      setIsSubmitting(false);
+      onAddStop().then(() => {
+        setIsSubmitting(false);
+      });
     }
   }, [errors]);
 
