@@ -16,7 +16,7 @@ const stops = (state = [], action) => {
           stop.id === action.id
             ? {
                 ...stop,
-                [action.inputName]: action.inputValue
+                ...action.newValues,
               }
             : stop
         )
