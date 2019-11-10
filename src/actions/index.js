@@ -1,8 +1,8 @@
-let nextStopId = 0;
+import uuidv4 from 'uuid';
 
 export const addStop = ({ name, address }) => ({
   type: 'ADD_STOP',
-  id: nextStopId++,
+  id: uuidv4(),
   name,
   address,
 });

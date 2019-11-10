@@ -30,7 +30,7 @@ const StopList = ({ stops, toggleStop, editStop, deleteStop }) => (
 
 StopList.propTypes = {
   stops: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
     completed: PropTypes.bool.isRequired,
     name: PropTypes.string.isRequired,
     address: PropTypes.string.isRequired
