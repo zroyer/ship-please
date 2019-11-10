@@ -14,14 +14,13 @@
   .StopRow:last-of-type {
     border-bottom: 2px solid @border-color;
   }
-  .StopRowTopActions {
-    margin: 0 0 0.25rem 0;
+  .StopRowActions {
     padding: 0.25rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    .StopRowTopActionsLeft {
+    .StopRowActionsLeft {
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -40,27 +39,6 @@
       &:hover {
         opacity: 0.6;
       }
-    }
-  }
-  .StopRowLabel {
-    color: @text-color;
-    font-size: 0.9rem;
-    font-weight: 500;
-    opacity: 0.75;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-  .StopRowLabelValue {
-    color: @white;
-    background-color: @orange-warning;
-    margin: 0 0 0 0.5rem;
-    padding: 0.25rem 0.5rem;
-    border-radius: 6px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    &.completed {
-      background-color: @green-success;
     }
   }
   .StopRowInput,

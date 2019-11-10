@@ -40,26 +40,6 @@ function Stop ({
 
   return (
     <div className='StopRow'>
-      <div className='StopRowTopActions'>
-        <div className='StopRowTopActionsLeft'>
-          <label className="container">
-            <input
-              type="checkbox"
-              onClick={onToggleComplete}
-            />
-            <span className="checkmark"/>
-          </label>
-          <span className='StopRowLabel'>
-            {
-              `Stop ${numStop}: `
-            }
-            <span className={`StopRowLabelValue ${completed ? 'completed' : ''}`}>
-              {completed ? 'Complete' : 'Incomplete'}
-            </span>
-          </span>
-        </div>
-        <span className='StopRowDelete' onClick={onDeleteStop}>&#215;</span>
-      </div>
       <Input
         className='StopRowInput'
         value={editValues.name}
@@ -77,6 +57,17 @@ function Stop ({
         onBlur={(e) => handleOnBlur(e)}
         isMultiline
       />
+      <div className='StopRowActions'>
+        <label className='container'>
+          <span className='labelText'>Complete</span>
+          <input
+            type='checkbox'
+            onClick={onToggleComplete}
+          />
+          <span className='checkmark'/>
+        </label>
+        <span className='StopRowDelete' onClick={onDeleteStop}>&#215;</span>
+      </div>
     </div>
   )
 };
