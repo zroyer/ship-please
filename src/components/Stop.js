@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
-import PropTypes from 'prop-types'
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import Input from './Input';
 
 function Stop ({
   numStop,
@@ -59,7 +60,7 @@ function Stop ({
         </div>
         <button onClick={onDeleteStop}>Delete</button>
       </div>
-      <input
+      <Input
         className='StopRowInput'
         value={editValues.name}
         name='name'
@@ -67,13 +68,14 @@ function Stop ({
         onKeyDown={(e) => handleKeyPress(e)}
         onBlur={(e) => handleOnBlur(e)}
       />
-      <textarea
+      <Input
         className='StopRowTextarea'
         value={editValues.address}
         name='address'
         onChange={(e) => handleChange(e)}
         onKeyDown={(e) => handleKeyPress(e)}
         onBlur={(e) => handleOnBlur(e)}
+        isMultiline
       />
     </div>
   )

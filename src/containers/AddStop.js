@@ -4,6 +4,7 @@ import useAddStop from "./useAddStop";
 import { addStop } from '../actions';
 import validate from '../util/validate';
 import Title from '../components/Title';
+import Input from '../components/Input';
 
 function AddStop({ dispatch }) {
   const {
@@ -62,7 +63,7 @@ function AddStop({ dispatch }) {
         <div className='addStopInputLabel'>
           Name
         </div>
-        <input
+        <Input
           className='addStopInput'
           type='text'
           name='name'
@@ -77,7 +78,7 @@ function AddStop({ dispatch }) {
         <div className='addStopInputLabel'>
           Address
         </div>
-        <input
+        <Input
           className='addStopInput'
           type='text'
           name='address'
