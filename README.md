@@ -1,6 +1,6 @@
 # Ship Please! 🚢
 [![Netlify Status](https://api.netlify.com/api/v1/badges/49c7e58a-1026-48bd-97c3-aa56e215cdc1/deploy-status)](https://app.netlify.com/sites/ship-please/deploys)  
-Add, Edit, and Remove stops from a Shipment Itinerary
+Add, Edit, and Remove stops from your shipment itinerary
 
 ## Setup 🚀
 - clone this repo and `cd` into `/ship-please`
@@ -13,4 +13,4 @@ Add, Edit, and Remove stops from a Shipment Itinerary
 - [Redux](https://github.com/reduxjs/redux) - State management
 - [Less](https://github.com/less/less.js) - Dynamic styling
 - [webpack](https://github.com/webpack/webpack) - Module bundling
-- [Babel](https://github.com/babel/babel) - JS Compilation
+- [Babel](https://github.com/babel/babel) - JS compilation
