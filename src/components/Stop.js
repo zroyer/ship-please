@@ -73,7 +73,7 @@ function Stop ({
             />
             <span className='checkmark'/>
           </label>
-          <span className='StopRowDelete' onClick={onDeleteStop}>&#215;</span>
+          <span className='StopRowDelete' onClick={onDeleteStop}>Delete</span>
         </div>
       </div>
     </div>
