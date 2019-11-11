@@ -61,7 +61,7 @@ function AddStopForm({ dispatch, isLoading }) {
 
 AddStopForm.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  isLoading: PropTypes.boolean.isRequired,
+  isLoading: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => ({
