@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 const Button = ({ content, className, onClick }) => (
   <button
+    type='submit'
     className={className}
     onClick={onClick}
   >

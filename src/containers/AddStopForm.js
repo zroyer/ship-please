@@ -1,14 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import useAddStop from './useAddStop';
+import useAddStopForm from '../hooks/useAddStopForm';
 import { addStop } from '../actions';
-import validate from '../util/validate';
+import validateAddStopForm from '../util/validateAddStopForm';
 import Header from '../components/Header';
 import InputGroup from '../components/InputGroup';
 import Button from '../components/Button';
 
-function AddStop({ dispatch }) {
+function AddStopForm({ dispatch }) {
   const {
     values,
     setValues,
@@ -17,9 +17,9 @@ function AddStop({ dispatch }) {
     handleSubmit,
     handleChange,
     isSubmitting,
-  } = useAddStop(onAddStop, validate);
+  } = useAddStopForm(onAddStopForm, validateAddStopForm);
 
-  async function onAddStop() {
+  async function onAddStopForm() {
     const formValues = values;
     return getValidAddress(formValues.address)
       .then((response) => {
@@ -57,7 +57,7 @@ function AddStop({ dispatch }) {
   return (
     <form
       onSubmit={handleSubmit}
-      className='AddStop'
+      className='AddStopForm'
       noValidate
     >
       <Header
@@ -88,8 +88,8 @@ function AddStop({ dispatch }) {
   )
 }
 
-AddStop.propTypes = {
+AddStopForm.propTypes = {
   dispatch: PropTypes.func.isRequired,
 };
 
-export default connect()(AddStop);
+export default connect()(AddStopForm);

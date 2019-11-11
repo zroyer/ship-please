@@ -51,17 +51,17 @@ function Stop ({
           className='StopRowInput'
           value={editValues.name}
           name='name'
-          onChange={(e) => handleChange(e)}
-          onKeyDown={(e) => handleKeyPress(e)}
-          onBlur={(e) => handleOnBlur(e)}
+          onChange={handleChange}
+          onKeyDown={handleKeyPress}
+          onBlur={handleOnBlur}
         />
         <Input
           className='StopRowTextarea'
           value={editValues.address}
           name='address'
-          onChange={(e) => handleChange(e)}
-          onKeyDown={(e) => handleKeyPress(e)}
-          onBlur={(e) => handleOnBlur(e)}
+          onChange={handleChange}
+          onKeyDown={handleKeyPress}
+          onBlur={handleOnBlur}
           isMultiline
         />
         <div className='StopRowActions'>

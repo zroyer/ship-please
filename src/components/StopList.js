@@ -14,6 +14,10 @@ const StopList = ({ stops, toggleComplete, editStop, deleteStop }) => (
     />
     {stops.map((stop, index) =>
       <Stop
+        id={stop.id}
+        completed={stop.completed}
+        name={stop.name}
+        address={stop.address}
         numStop={index + 1}
         key={stop.id}
         onToggleComplete={() => toggleComplete(stop.id)}
@@ -22,7 +26,6 @@ const StopList = ({ stops, toggleComplete, editStop, deleteStop }) => (
           newValues: values,
         })}
         onDeleteStop={() => deleteStop(stop.id)}
-        {...stop}
       />
     )}
   </div>

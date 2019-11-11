@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const useAddStop = (onAddStop, validate) => {
+const useAddStopForm = (onAddStop, validateAddStopForm) => {
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -15,7 +15,7 @@ const useAddStop = (onAddStop, validate) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setErrors(validate(values));
+    setErrors(validateAddStopForm(values));
     setIsSubmitting(true);
   };
 
@@ -27,7 +27,7 @@ const useAddStop = (onAddStop, validate) => {
     setValues(newValues);
     setErrors({
       ...errors,
-      [e.target.name]: validate(newValues)[e.target.name],
+      [e.target.name]: validateAddStopForm(newValues)[e.target.name],
     });
   };
 
@@ -42,4 +42,4 @@ const useAddStop = (onAddStop, validate) => {
   };
 };
 
-export default useAddStop;
+export default useAddStopForm;

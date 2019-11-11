@@ -1,4 +1,4 @@
-export default function validate(values) {
+export default function validateAddStopForm(values) {
   let errors = {};
   if (!values.name) {
     errors.name = 'Name is required';

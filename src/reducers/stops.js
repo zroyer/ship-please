@@ -1,6 +1,13 @@
+import {
+  ADD_STOP_ACTION,
+  EDIT_STOP_ACTION,
+  DELETE_STOP_ACTION,
+  COMPLETE_STOP_ACTION,
+} from '../actions/index';
+
 const stops = (state = [], action) => {
   switch (action.type) {
-    case 'ADD_STOP':
+    case ADD_STOP_ACTION:
       return ([
         ...state,
         {
@@ -10,7 +17,7 @@ const stops = (state = [], action) => {
           completed: false
         }
       ]);
-    case 'EDIT_STOP':
+    case EDIT_STOP_ACTION:
       return (
         state.map((stop) =>
           stop.id === action.id
@@ -21,13 +28,13 @@ const stops = (state = [], action) => {
             : stop
         )
       );
-    case 'DELETE_STOP':
+    case DELETE_STOP_ACTION:
       return (
         state.filter((stop) => {
           return stop.id !== action.id;
         })
       );
-    case 'COMPLETE_STOP':
+    case COMPLETE_STOP_ACTION:
       return (
         state.map((stop) =>
           stop.id === action.id
