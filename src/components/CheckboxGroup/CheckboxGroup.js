@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './CheckboxGroup.less';
 
 const CheckboxGroup = ({ onClick }) => (
   <label className='CheckboxGroup'>

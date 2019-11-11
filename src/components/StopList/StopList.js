@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Stop from './Stop';
-import Header from './Header';
+import Stop from '~/src/components/Stop';
+import Header from '~/src/components/Header';
+import './StopList.less';
 
 const StopList = ({ stops, toggleComplete, editStop, deleteStop }) => (
   <div className='StopList'>

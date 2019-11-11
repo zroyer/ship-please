@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import Input from './Input';
-import StopRowProgress from './StopRowProgress';
-import CheckboxGroup from './CheckboxGroup';
+import Input from '~/src/components/Input';
+import StopRowProgress from '~/src/components/StopRowProgress';
+import CheckboxGroup from '~/src/components/CheckboxGroup';
+import './Stop.less';
 
 function Stop ({
   numStop,

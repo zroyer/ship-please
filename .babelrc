@@ -5,6 +5,13 @@
       {
         "regenerator": true
       }
+    ],
+    [
+      "babel-plugin-root-import",
+      {
+        "rootPathSuffix": "./",
+        "rootPathPrefix": "~/"
+      }
     ]
   ],
 }

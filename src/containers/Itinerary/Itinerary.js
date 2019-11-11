@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { toggleComplete, editStop, deleteStop } from '../actions';
-import StopList from '../components/StopList';
+import { toggleComplete, editStop, deleteStop } from '~/src/actions';
+import StopList from '~/src/components/StopList';
 
 const mapStateToProps = (state) => ({
   stops: state.stops,

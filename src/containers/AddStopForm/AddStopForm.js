@@ -1,12 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import useAddStopForm from '../hooks/useAddStopForm';
-import { addStop } from '../actions';
-import validateAddStopForm from '../util/validateAddStopForm';
-import Header from '../components/Header';
-import InputGroup from '../components/InputGroup';
-import Button from '../components/Button';
+import useAddStopForm from '~/src/hooks/useAddStopForm';
+import { addStop } from '~/src/actions';
+import validateAddStopForm from '~/src/util/validateAddStopForm';
+import Header from '~/src/components/Header/index';
+import InputGroup from '~/src/components/InputGroup/index';
+import Button from '~/src/components/Button/index';
+import './AddStopForm.less';
 
 function AddStopForm({ dispatch }) {
   const {

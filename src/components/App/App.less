@@ -1,21 +1,14 @@
-@import 'variables.less';
-body {
-  margin: 0;
-  background-color: @background-color;
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: .8rem;
-}
-input,
-textarea {
-  font-family: 'Noto Sans SC', sans-serif;
-}
+@import '../../styles/colors.less';
+
 .App {
+  width: 355px;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 2.5rem 0 4rem 0;
   .Title {
-    width: @content-width;
+    width: 100%;
+    box-sizing: border-box;
     padding: 0 1.5rem;
     display: flex;
     flex-direction: row;

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './StopRowProgress.less';
 
 const StopRowProgress = ({ numStop, completed }) => (
   <div className={`StopRowProgress ${completed ? 'complete': ''}`}>

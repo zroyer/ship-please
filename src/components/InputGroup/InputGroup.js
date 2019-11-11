@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Input from './Input';
+import Input from '~/src/components/Input';
+import './InputGroup.less'
 
 const InputGroup = ({
   inputValue,
