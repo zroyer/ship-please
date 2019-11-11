@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import useAddStop from "./useAddStop";
+import PropTypes from 'prop-types';
+import useAddStop from './useAddStop';
 import { addStop } from '../actions';
 import validate from '../util/validate';
 import Header from '../components/Header';
@@ -29,6 +30,7 @@ function AddStop({ dispatch }) {
         setValues({});
       })
       .catch((error) => {
+        console.log(error);
         setErrors({
           ...errors,
           address: 'Invalid address!'
@@ -84,5 +86,9 @@ function AddStop({ dispatch }) {
     </form>
   )
 }
+
+AddStop.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+};
 
 export default connect()(AddStop);

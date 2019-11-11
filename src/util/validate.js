@@ -10,4 +10,4 @@ export default function validate(values) {
     errors.address = 'Address must be at least 3 characters';
   }
   return errors;
-};
+}

@@ -78,7 +78,7 @@ function Stop ({
       </div>
     </div>
   )
-};
+}
 
 Stop.propTypes = {
   numStop: PropTypes.number.isRequired,
