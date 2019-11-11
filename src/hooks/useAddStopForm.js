@@ -1,21 +1,33 @@
 import { useState, useEffect } from 'react';
+import {
+  FETCH_ADDRESS_SUCCESS,
+} from '~/src/actions/index';
 
 const useAddStopForm = (onAddStop, validateAddStopForm) => {
   const [values, setValues] = useState({});
-  const [errors, setErrors] = useState({});
+  const [formErrors, setFormErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
-    if (Object.keys(errors).length === 0 && isSubmitting) {
-      onAddStop().then(() => {
-        setIsSubmitting(false);
-      });
+    if (Object.keys(formErrors).length === 0 && isSubmitting) {
+      onAddStop()
+        .then((response) => {
+          setIsSubmitting(false);
+          if (response.type === FETCH_ADDRESS_SUCCESS) {
+            setValues({});
+          }
+          else {
+            setFormErrors({
+              address: 'Invalid address!',
+            });
+          }
+        });
     }
-  }, [errors]);
+  }, [formErrors]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setErrors(validateAddStopForm(values));
+    setFormErrors(validateAddStopForm(values));
     setIsSubmitting(true);
   };
 
@@ -25,8 +37,8 @@ const useAddStopForm = (onAddStop, validateAddStopForm) => {
       [e.target.name]: e.target.value,
     };
     setValues(newValues);
-    setErrors({
-      ...errors,
+    setFormErrors({
+      ...formErrors,
       [e.target.name]: validateAddStopForm(newValues)[e.target.name],
     });
   };
@@ -34,11 +46,9 @@ const useAddStopForm = (onAddStop, validateAddStopForm) => {
   return {
     values,
     setValues,
-    errors,
-    setErrors,
+    formErrors,
     handleSubmit,
     handleChange,
-    isSubmitting,
   };
 };
 

@@ -3,7 +3,7 @@ import { toggleComplete, editStop, deleteStop } from '~/src/actions';
 import StopList from '~/src/components/StopList';
 
 const mapStateToProps = (state) => ({
-  stops: state.stops,
+  stops: state.shipments.stops,
 });
 
 const mapDispatchToProps = (dispatch) => ({

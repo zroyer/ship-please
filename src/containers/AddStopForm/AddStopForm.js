@@ -1,59 +1,30 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { addStop, fetchValidateAddress } from '~/src/actions';
 import useAddStopForm from '~/src/hooks/useAddStopForm';
-import { addStop } from '~/src/actions';
 import validateAddStopForm from '~/src/util/validateAddStopForm';
 import Header from '~/src/components/Header/index';
 import InputGroup from '~/src/components/InputGroup/index';
 import Button from '~/src/components/Button/index';
 import './AddStopForm.less';
 
-function AddStopForm({ dispatch }) {
+function AddStopForm({ dispatch, isLoading }) {
   const {
     values,
     setValues,
-    errors,
-    setErrors,
+    formErrors,
     handleSubmit,
     handleChange,
-    isSubmitting,
-  } = useAddStopForm(onAddStopForm, validateAddStopForm);
+  } = useAddStopForm(onAddStop, validateAddStopForm);
 
-  async function onAddStopForm() {
+  async function onAddStop() {
     const formValues = values;
-    return getValidAddress(formValues.address)
-      .then((response) => {
-        dispatch(addStop({
-          name: formValues.name,
-          address: response.geocoded_address.formatted_address,
-        }));
-        setValues({});
-      })
-      .catch((error) => {
-        if(error && typeof(formatted_address) === 'undefined') {
-          setErrors({
-            ...errors,
-            address: 'Invalid address!'
-          });
-        }
-      });
+    return dispatch(fetchValidateAddress({
+      name: formValues.name,
+      address: formValues.address,
+    }));
   }
-
-  const getValidAddress = async (address) => {
-    const addressValidation = await fetch(
-      'https://dev-api.shipwell.com/v2/locations/addresses/validate/',
-      {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({formatted_address: address}),
-    });
-
-    return addressValidation.json();
-  };
 
   return (
     <form
@@ -68,22 +39,22 @@ function AddStopForm({ dispatch }) {
       <InputGroup
         label='Name'
         inputName='name'
-        inputValue={values.name || ''}
-        error={errors.name || ''}
         onChange={handleChange}
+        inputValue={values.name || ''}
+        error={formErrors.name || ''}
       />
       <InputGroup
         label='Address'
         inputName='address'
-        inputValue={values.address || ''}
-        error={errors.address || ''}
         onChange={handleChange}
+        inputValue={values.address || ''}
+        error={formErrors.address || ''}
       />
       <Button
-        content={isSubmitting ? 'Adding...' : 'Add'}
+        content={isLoading ? 'Adding...' : 'Add'}
         className='addStopSubmitBtn'
         onClick={handleSubmit}
-        disabled={isSubmitting}
+        disabled={isLoading}
       />
     </form>
   )
@@ -93,4 +64,8 @@ AddStopForm.propTypes = {
   dispatch: PropTypes.func.isRequired,
 };
 
-export default connect()(AddStopForm);
+const mapStateToProps = (state) => ({
+  isLoading: state.shipments.isLoading,
+});
+
+export default connect(mapStateToProps)(AddStopForm);

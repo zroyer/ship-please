@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import stops from './stops';
+import stopReducer from './stopReducer';
 
 export default combineReducers({
-  stops,
+  shipments: stopReducer,
 });
