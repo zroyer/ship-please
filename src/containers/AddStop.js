@@ -30,11 +30,12 @@ function AddStop({ dispatch }) {
         setValues({});
       })
       .catch((error) => {
-        console.log(error);
-        setErrors({
-          ...errors,
-          address: 'Invalid address!'
-        });
+        if(error && typeof(formatted_address) === 'undefined') {
+          setErrors({
+            ...errors,
+            address: 'Invalid address!'
+          });
+        }
       });
   }
 

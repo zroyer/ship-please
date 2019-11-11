@@ -23,7 +23,7 @@ const useAddStop = (onAddStop, validate) => {
     const newValues = {
       ...values,
       [e.target.name]: e.target.value,
-    }
+    };
     setValues(newValues);
     setErrors({
       ...errors,
@@ -39,7 +39,7 @@ const useAddStop = (onAddStop, validate) => {
     handleSubmit,
     handleChange,
     isSubmitting,
-  }
+  };
 };
 
 export default useAddStop;

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { toggleStop, editStop, deleteStop } from '../actions';
+import { toggleComplete, editStop, deleteStop } from '../actions';
 import StopList from '../components/StopList';
 
 const mapStateToProps = (state) => ({
@@ -7,7 +7,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  toggleStop: (id) => dispatch(toggleStop(id)),
+  toggleComplete: (id) => dispatch(toggleComplete(id)),
   editStop: (id) => dispatch(editStop(id)),
   deleteStop: (id) => dispatch(deleteStop(id)),
 });
@@ -15,4 +15,4 @@ const mapDispatchToProps = (dispatch) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(StopList)
+)(StopList);

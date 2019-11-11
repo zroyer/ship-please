@@ -24,7 +24,7 @@ const stops = (state = [], action) => {
     case 'DELETE_STOP':
       return (
         state.filter((stop) => {
-          return stop.id !== action.id
+          return stop.id !== action.id;
         })
       );
     case 'COMPLETE_STOP':
@@ -36,8 +36,8 @@ const stops = (state = [], action) => {
         )
       );
     default:
-      return state
+      return state;
   }
 }
 
-export default stops
+export default stops;

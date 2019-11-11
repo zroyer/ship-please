@@ -19,6 +19,7 @@ const Input = ({
         onChange={onChange}
         onKeyDown={onKeyDown}
         onBlur={onBlur}
+        autocomplete='off'
       />
     ) : (
       <input
@@ -29,6 +30,7 @@ const Input = ({
         onChange={onChange}
         onKeyDown={onKeyDown}
         onBlur={onBlur}
+        autocomplete='off'
       />
     )
 };

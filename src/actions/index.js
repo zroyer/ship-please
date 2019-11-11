@@ -18,7 +18,7 @@ export const deleteStop = (id) => ({
   id,
 });
 
-export const toggleStop = (id) => ({
+export const toggleComplete = (id) => ({
   type: 'COMPLETE_STOP',
   id,
 });
