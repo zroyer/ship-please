@@ -1,29 +1,35 @@
 import { useState, useEffect } from 'react';
-import {
-  FETCH_ADDRESS_SUCCESS,
-} from '~/src/actions/index';
 
-const useAddStopForm = (onAddStop, validateAddStopForm) => {
+const useAddStopForm = ({
+  onAddStop,
+  validateAddStopForm,
+  isLoading,
+  apiError,
+}) => {
   const [values, setValues] = useState({});
   const [formErrors, setFormErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     if (Object.keys(formErrors).length === 0 && isSubmitting) {
-      onAddStop()
-        .then((response) => {
-          setIsSubmitting(false);
-          if (response.type === FETCH_ADDRESS_SUCCESS) {
-            setValues({});
-          }
-          else {
-            setFormErrors({
-              address: 'Invalid address!',
-            });
-          }
-        });
+      onAddStop().then(() => {
+        setIsSubmitting(false);
+      });
     }
   }, [formErrors]);
+
+  useEffect(() => {
+    if (isSubmitting && !isLoading) {
+      if (apiError) {
+        setFormErrors({
+          ...formErrors,
+          address: apiError,
+        });
+      } else {
+        setValues({});
+      }
+    }
+  }, [isLoading]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

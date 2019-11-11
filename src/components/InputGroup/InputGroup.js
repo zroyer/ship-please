@@ -1,19 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Input from '~/src/components/Input';
-import './InputGroup.less'
+import './InputGroup.less';
 
-const InputGroup = ({
-  inputValue,
-  inputName,
-  label,
-  error,
-  onChange,
-}) => (
+const InputGroup = ({ inputValue, inputName, label, error, onChange }) => (
   <div className='InputGroup'>
-    <div className='InputGroupLabel'>
-      {label}
-    </div>
+    <div className='InputGroupLabel'>{label}</div>
     <Input
       className='addStopInput'
       type='text'
@@ -21,9 +13,7 @@ const InputGroup = ({
       value={inputValue || ''}
       onChange={onChange}
     />
-    {error && (
-      <div className='InputGroupError'>{error}</div>
-    )}
+    {error && <div className='InputGroupError'>{error}</div>}
   </div>
 );
 

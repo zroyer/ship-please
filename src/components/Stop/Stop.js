@@ -5,7 +5,7 @@ import StopRowProgress from '~/src/components/StopRowProgress';
 import CheckboxGroup from '~/src/components/CheckboxGroup';
 import './Stop.less';
 
-function Stop ({
+function Stop({
   numStop,
   onToggleComplete,
   onEditStop,
@@ -14,71 +14,65 @@ function Stop ({
   name,
   address,
 }) {
-  const [editValues, setEditValues] = useState({
+  const initialValues = {
     name: name,
     address: address,
-  });
+  };
+  const [editValues, setEditValues] = useState(initialValues);
 
   const handleChange = (e) => {
     const newValues = {
       ...editValues,
       [e.target.name]: e.target.value,
-    }
+    };
     setEditValues(newValues);
   };
 
   const handleKeyPress = (e) => {
     if (e.keyCode === 13) {
-      const newValues = {...editValues};
-      onEditStop(newValues);
       e.target.blur();
     }
   };
 
   const handleOnBlur = (e) => {
     e.preventDefault();
-    const newValues = {...editValues};
-    onEditStop(newValues);
+    if (editValues[e.target.name] !== initialValues[e.target.name]) {
+      onEditStop({
+        [e.target.name]: editValues[e.target.name],
+      });
+    }
   };
 
   return (
     <div className='StopRow'>
-      <StopRowProgress
-        numStop={numStop}
-        completed={completed}
-      />
+      <StopRowProgress numStop={numStop} completed={completed} />
       <div className='StopRowContent'>
         <Input
           className='StopRowInput'
-          value={editValues.name}
           name='name'
+          value={editValues.name}
           onChange={handleChange}
           onKeyDown={handleKeyPress}
           onBlur={handleOnBlur}
         />
         <Input
           className='StopRowTextarea'
-          value={editValues.address}
           name='address'
+          value={editValues.address}
           onChange={handleChange}
           onKeyDown={handleKeyPress}
           onBlur={handleOnBlur}
           isMultiline
         />
         <div className='StopRowActions'>
-          <CheckboxGroup
-            onClick={onToggleComplete}
-          />
-          <span
-            className='StopRowDelete'
-            onClick={onDeleteStop}
-          >
+          <CheckboxGroup onClick={onToggleComplete} />
+          <span className='StopRowDelete' onClick={onDeleteStop}>
             Delete
           </span>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 Stop.propTypes = {

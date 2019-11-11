@@ -5,8 +5,7 @@ export default function validateAddStopForm(values) {
   }
   if (!values.address) {
     errors.address = 'Address is required';
-  }
-  else if (values.address.length < 3) {
+  } else if (values.address.length < 3) {
     errors.address = 'Address must be at least 3 characters';
   }
   return errors;

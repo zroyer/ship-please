@@ -12,7 +12,4 @@ const mapDispatchToProps = (dispatch) => ({
   deleteStop: (id) => dispatch(deleteStop(id)),
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(StopList);
+export default connect(mapStateToProps, mapDispatchToProps)(StopList);

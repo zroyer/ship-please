@@ -3,7 +3,7 @@
 Add, Edit, and Remove stops from your shipment itinerary
 
 ## Setup 🚀
-- clone this repo and `cd` into `/ship-please`
+- clone this repo and `cd` into `ship-please/`
 - `npm install` to install dependencies
 - `npm start` to start the server
 - [Check it out](http:localhost:8080) in your favorite browser!

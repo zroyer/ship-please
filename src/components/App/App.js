@@ -1,7 +1,7 @@
 import React from 'react';
-import Title from '~/src/components/Title/index';
-import AddStopForm from '~/src/containers/AddStopForm/index';
-import Itinerary from '~/src/containers/Itinerary/index';
+import Title from '~/src/components/Title';
+import AddStopForm from '~/src/containers/AddStopForm';
+import Itinerary from '~/src/containers/Itinerary';
 import './App.less';
 
 const App = () => (

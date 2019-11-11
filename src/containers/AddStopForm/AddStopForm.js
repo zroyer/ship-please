@@ -4,20 +4,20 @@ import PropTypes from 'prop-types';
 import { fetchValidateAddress } from '~/src/actions';
 import useAddStopForm from '~/src/hooks/useAddStopForm';
 import validateAddStopForm from '~/src/util/validateAddStopForm';
-import Header from '~/src/components/Header/index';
-import InputGroup from '~/src/components/InputGroup/index';
-import Button from '~/src/components/Button/index';
+import Header from '~/src/components/Header';
+import InputGroup from '~/src/components/InputGroup';
+import Button from '~/src/components/Button';
 import './AddStopForm.less';
 
-function AddStopForm({ fetchValidateAddress, isLoading }) {
-  const {
-    values,
-    formErrors,
-    handleSubmit,
-    handleChange,
-  } = useAddStopForm(onAddStop, validateAddStopForm);
+function AddStopForm({ fetchValidateAddress, isLoading, apiError }) {
+  const { values, formErrors, handleSubmit, handleChange } = useAddStopForm({
+    onAddStop,
+    validateAddStopForm,
+    isLoading,
+    apiError,
+  });
 
-  async function onAddStop() {
+  function onAddStop() {
     const formValues = values;
     return fetchValidateAddress({
       name: formValues.name,
@@ -26,15 +26,8 @@ function AddStopForm({ fetchValidateAddress, isLoading }) {
   }
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className='AddStopForm'
-      noValidate
-    >
-      <Header
-        content='Add a stop'
-        className='addStopHeader'
-      />
+    <form onSubmit={handleSubmit} className='AddStopForm' noValidate>
+      <Header content='Add a stop' className='addStopHeader' />
       <InputGroup
         label='Name'
         inputName='name'
@@ -56,23 +49,23 @@ function AddStopForm({ fetchValidateAddress, isLoading }) {
         disabled={isLoading}
       />
     </form>
-  )
+  );
 }
 
 AddStopForm.propTypes = {
   fetchValidateAddress: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
+  apiError: PropTypes.string,
 };
 
 const mapStateToProps = (state) => ({
   isLoading: state.shipments.isLoading,
+  apiError: state.shipments.apiError,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchValidateAddress: ({ name, address }) => dispatch(fetchValidateAddress({ name, address })),
+  fetchValidateAddress: ({ name, address }) =>
+    dispatch(fetchValidateAddress({ name, address })),
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(AddStopForm);
+export default connect(mapStateToProps, mapDispatchToProps)(AddStopForm);

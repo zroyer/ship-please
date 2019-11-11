@@ -10,29 +10,28 @@ const Input = ({
   onBlur,
   isMultiline,
 }) => {
-  return isMultiline
-    ? (
-      <textarea
-        className={`Input ${className}`}
-        name={name}
-        value={value}
-        onChange={onChange}
-        onKeyDown={onKeyDown}
-        onBlur={onBlur}
-        autoComplete='off'
-      />
-    ) : (
-      <input
-        className={`Input ${className}`}
-        name={name}
-        type='text'
-        value={value}
-        onChange={onChange}
-        onKeyDown={onKeyDown}
-        onBlur={onBlur}
-        autoComplete='off'
-      />
-    )
+  return isMultiline ? (
+    <textarea
+      className={`Input ${className}`}
+      name={name}
+      value={value}
+      onChange={onChange}
+      onKeyDown={onKeyDown}
+      onBlur={onBlur}
+      autoComplete='off'
+    />
+  ) : (
+    <input
+      className={`Input ${className}`}
+      name={name}
+      type='text'
+      value={value}
+      onChange={onChange}
+      onKeyDown={onKeyDown}
+      onBlur={onBlur}
+      autoComplete='off'
+    />
+  );
 };
 
 Input.propTypes = {

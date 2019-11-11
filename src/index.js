@@ -7,13 +7,10 @@ import rootReducer from './reducers';
 import App from './components/App/index';
 import './styles/index.less';
 
-const store = createStore(
-  rootReducer,
-  applyMiddleware(thunk)
-);
-render (
+const store = createStore(rootReducer, applyMiddleware(thunk));
+render(
   <Provider store={store}>
     <App />
   </Provider>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );

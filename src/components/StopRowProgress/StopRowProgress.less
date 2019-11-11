@@ -1,14 +1,15 @@
 @import '../../styles/colors.less';
 
 .StopRowProgress {
+  margin: -1px 0 0 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   .StopRowProgressBar {
     width: 6px;
-    height: 147px;
-    margin: -140px 0 0 0;
+    height: 150px;
+    margin: -145px 0 0 0;
     background-color: @blue-accent;
     position: absolute;
     z-index: 2;
@@ -18,15 +19,14 @@
   }
   .StopRowProgressBadge {
     background-color: @blue-accent;
-    margin: 3px 0 0 0;
-    width: 32px;
-    height: 32px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 3;
-    span {
+    .stopRowProgressBadgeStop {
       color: @white;
       margin: 0 0 1px 1px;
       font-size: 1.2rem;

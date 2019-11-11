@@ -12,45 +12,65 @@ export const fetchAddressBegin = () => ({
   type: FETCH_ADDRESS_BEGIN,
 });
 
-
 export const fetchAddressSuccess = ({ name, address }) => ({
   type: FETCH_ADDRESS_SUCCESS,
-  id: uuidv4(),
-  name,
-  address,
+  payload: {
+    id: uuidv4(),
+    name,
+    address,
+  },
 });
 
-export const fetchAddressError= () => ({
+export const fetchAddressError = ({ error }) => ({
   type: FETCH_ADDRESS_ERROR,
+  payload: {
+    error,
+  },
 });
 
-export const editStop = ({ id, newValues }) => ({
+export const editStop = ({ id, newValue }) => ({
   type: EDIT_STOP_ACTION,
-  id,
-  newValues,
+  payload: {
+    id,
+    newValue,
+  },
 });
 
 export const deleteStop = (id) => ({
   type: DELETE_STOP_ACTION,
-  id,
+  payload: {
+    id,
+  },
 });
 
 export const toggleComplete = (id) => ({
   type: COMPLETE_STOP_ACTION,
-  id,
+  payload: {
+    id,
+  },
 });
 
-export const fetchValidateAddress = ({ name, address }) => async (dispatch) => {
+export const fetchValidateAddress = ({ name, address }) => (dispatch) => {
   dispatch(fetchAddressBegin());
   return getValidAddress(address)
-    .then((response) => {
-      return dispatch(fetchAddressSuccess({
-        name: name,
-        address: response.geocoded_address.formatted_address,
-      }));
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.error) {
+        dispatch(
+          fetchAddressError({
+            error: 'Invalid Address',
+          }),
+        );
+      } else {
+        dispatch(
+          fetchAddressSuccess({
+            name: name,
+            address: data.geocoded_address.formatted_address,
+          }),
+        );
+      }
     })
     .catch((error) => {
       console.log(error);
-      return dispatch(fetchAddressError());
     });
-}
+};

@@ -1,14 +1,13 @@
-export const getValidAddress = async (address) => {
-  const addressValidation = await fetch(
+export const getValidAddress = (address) => {
+  return fetch(
     'https://dev-api.shipwell.com/v2/locations/addresses/validate/',
     {
       method: 'POST',
       headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify({formatted_address: address}),
-  });
-
-  return addressValidation.json();
+      body: JSON.stringify({ formatted_address: address }),
+    },
+  );
 };
