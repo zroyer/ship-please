@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { addStop, fetchValidateAddress } from '~/src/actions';
+import { fetchValidateAddress } from '~/src/actions';
 import useAddStopForm from '~/src/hooks/useAddStopForm';
 import validateAddStopForm from '~/src/util/validateAddStopForm';
 import Header from '~/src/components/Header/index';
@@ -12,7 +12,6 @@ import './AddStopForm.less';
 function AddStopForm({ dispatch, isLoading }) {
   const {
     values,
-    setValues,
     formErrors,
     handleSubmit,
     handleChange,
@@ -62,6 +61,7 @@ function AddStopForm({ dispatch, isLoading }) {
 
 AddStopForm.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  isLoading: PropTypes.boolean.isRequired,
 };
 
 const mapStateToProps = (state) => ({

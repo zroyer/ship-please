@@ -46,10 +46,11 @@ export const fetchValidateAddress = ({ name, address }) => async (dispatch) => {
     .then((response) => {
       return dispatch(fetchAddressSuccess({
         name: name,
-        address: response.geocoded_address.formatted_address
+        address: response.geocoded_address.formatted_address,
       }));
     })
     .catch((error) => {
+      console.log(error);
       return dispatch(fetchAddressError());
     });
 }
