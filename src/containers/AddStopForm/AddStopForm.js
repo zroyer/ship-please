@@ -9,7 +9,7 @@ import InputGroup from '~/src/components/InputGroup/index';
 import Button from '~/src/components/Button/index';
 import './AddStopForm.less';
 
-function AddStopForm({ dispatch, isLoading }) {
+function AddStopForm({ fetchValidateAddress, isLoading }) {
   const {
     values,
     formErrors,
@@ -19,10 +19,10 @@ function AddStopForm({ dispatch, isLoading }) {
 
   async function onAddStop() {
     const formValues = values;
-    return dispatch(fetchValidateAddress({
+    return fetchValidateAddress({
       name: formValues.name,
       address: formValues.address,
-    }));
+    });
   }
 
   return (
@@ -60,7 +60,7 @@ function AddStopForm({ dispatch, isLoading }) {
 }
 
 AddStopForm.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  fetchValidateAddress: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
 };
 
@@ -68,4 +68,11 @@ const mapStateToProps = (state) => ({
   isLoading: state.shipments.isLoading,
 });
 
-export default connect(mapStateToProps)(AddStopForm);
+const mapDispatchToProps = (dispatch) => ({
+  fetchValidateAddress: ({ name, address }) => dispatch(fetchValidateAddress({ name, address })),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(AddStopForm);
