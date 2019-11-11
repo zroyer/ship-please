@@ -9,12 +9,7 @@ import {
 } from '../actions/index';
 
 const initialState = {
-  stops: [{
-    id: '1111',
-    name: 'test',
-    address: '123 testing',
-    completed: false,
-  }],
+  stops: [],
   isLoading: false,
 };
 
